@@ -19,5 +19,4 @@ public class Network<I, O> {
     public O getOutputStream() {
         return outputStream;
     }
-
 }

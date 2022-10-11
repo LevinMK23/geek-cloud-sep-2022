@@ -6,8 +6,14 @@ import io.netty.handler.codec.serialization.ObjectDecoderInputStream;
 import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +21,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,8 +29,11 @@ import java.util.ResourceBundle;
 
 public class CloudMainController implements Initializable {
     public ListView<String> clientView;
+
     public ListView<String> serverView;
     private String currentDirectory;
+    @FXML
+    private TextField renameField;
 
     private Network<ObjectDecoderInputStream, ObjectEncoderOutputStream> network;
     
@@ -32,6 +42,7 @@ public class CloudMainController implements Initializable {
     private boolean needReadMessages = true;
 
     private DaemonThreadFactory factory;
+    private static CloudMainController cloudMainController;
 
     public void downloadFile(ActionEvent actionEvent) throws IOException {
         String fileName = serverView.getSelectionModel().getSelectedItem();
@@ -127,4 +138,34 @@ public class CloudMainController implements Initializable {
         return List.of();
     }
 
+    public void renameBtnClick(ActionEvent actionEvent) throws IOException {
+        String name = serverView.getSelectionModel().getSelectedItem();
+        //setCurrentDirectory(System.getProperty();
+        File selectedFile = new File(currentDirectory + "/" + name);
+        System.out.println(selectedFile);
+        //if (selectedFile.isDirectory()) {
+        //
+        //    if (selectedFile.renameTo(new File(renameField.getText()))) {
+        //        System.out.println("Successfully");
+        //    } else System.out.println("Error");
+        //}
+
+    }
+    public void delClientBtnClick(ActionEvent actionEvent) {
+        String fileName = clientView.getSelectionModel().getSelectedItem();
+        Path file = Path.of(currentDirectory,fileName);
+        try {
+            Files.delete(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Platform.runLater(()->fillView(clientView,getFiles(currentDirectory)));
+    }
+
+    public void delServerBtnClick(ActionEvent actionEvent) throws IOException {
+        String fileName = serverView.getSelectionModel().getSelectedItem();
+        network.getOutputStream().writeObject(new DeleteFile(fileName));
+    }
+
 }
+
