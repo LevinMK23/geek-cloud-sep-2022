@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.sep22.geekcloudclient.RegController">
+   <children>
+      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #E6E6FA;">
+         <children>
+            <Text layoutX="195.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="128.13671875">
+               <font>
+                  <Font name="Century Gothic" size="19.0" />
+               </font>
+            </Text>
+            <Pane layoutX="-53.0" layoutY="-45.0" prefHeight="100.0" prefWidth="202.0" style="-fx-background-color: #B0E0E6; -fx-background-radius: 100;">
+               <children>
+                  <Text layoutX="82.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLOUD" wrappingWidth="97.9453125">
+                     <font>
+                        <Font name="Century Gothic" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Text layoutX="77.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="77.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <MFXTextField fx:id="loginRegField" floatMode="ABOVE" layoutX="186.0" layoutY="121.0" prefHeight="34.0" prefWidth="221.0" />
+            <MFXTextField fx:id="passRegField" floatMode="ABOVE" layoutX="186.0" layoutY="177.0" prefHeight="34.0" prefWidth="221.0" />
+            <MFXButton fx:id="regOkBtn" layoutX="195.0" layoutY="252.0" onAction="#regOkBtnClick" prefHeight="34.0" prefWidth="128.0" text="OK" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
