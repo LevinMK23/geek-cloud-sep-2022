@@ -11,7 +11,7 @@ public class CloudClient extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("geek-cloud-client.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("authFXML.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Cloud client!");
         stage.setScene(scene);
