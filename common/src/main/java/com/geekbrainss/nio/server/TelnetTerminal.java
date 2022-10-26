@@ -1,4 +1,4 @@
-package com.geekbrains.nio.server;
+package com.geekbrainss.nio.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

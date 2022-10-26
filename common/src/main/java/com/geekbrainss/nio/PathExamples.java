@@ -1,4 +1,4 @@
-package com.geekbrains.nio;
+package com.geekbrainss.nio;
 
 import java.io.IOException;
 import java.io.InputStream;

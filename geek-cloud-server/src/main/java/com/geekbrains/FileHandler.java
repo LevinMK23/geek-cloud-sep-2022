@@ -3,8 +3,8 @@ package com.geekbrains;
 import java.io.*;
 import java.net.Socket;
 
-import static com.geekbrains.Command.*;
-import static com.geekbrains.FileUtils.readFileFromStream;
+import static com.geekbrainss.Command.*;
+import static com.geekbrainss.FileUtils.readFileFromStream;
 
 
 public class FileHandler implements Runnable {

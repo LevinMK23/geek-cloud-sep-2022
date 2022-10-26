@@ -1,6 +1,5 @@
-package com.geekbrains.model;
+package com.geekbrainss.model;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public interface CloudMessage extends Serializable {

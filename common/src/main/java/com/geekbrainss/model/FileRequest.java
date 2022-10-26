@@ -1,18 +1,18 @@
-package com.geekbrains.model;
+package com.geekbrainss.model;
 
 import lombok.Getter;
 
 @Getter
-public class DeleteFile implements CloudMessage{
+public class FileRequest implements CloudMessage {
 
     private final String fileName;
 
-    public DeleteFile(String fileName) {
+    public FileRequest(String fileName) {
         this.fileName = fileName;
     }
 
     @Override
     public MessageType getType() {
-        return MessageType.DEL_FILE;
+        return MessageType.FILE_REQUEST;
     }
 }

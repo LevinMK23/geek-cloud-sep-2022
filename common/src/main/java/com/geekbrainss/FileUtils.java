@@ -1,4 +1,4 @@
-package com.geekbrains;
+package com.geekbrainss;
 
 import java.io.DataInputStream;
 import java.io.FileOutputStream;

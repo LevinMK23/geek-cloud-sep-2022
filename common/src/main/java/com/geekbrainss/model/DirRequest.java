@@ -1,4 +1,4 @@
-package com.geekbrains.model;
+package com.geekbrainss.model;
 
 import lombok.Getter;
 @Getter

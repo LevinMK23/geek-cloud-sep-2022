@@ -1,4 +1,4 @@
-package com.geekbrains;
+package com.geekbrainss;
 
 public enum Command {
 
