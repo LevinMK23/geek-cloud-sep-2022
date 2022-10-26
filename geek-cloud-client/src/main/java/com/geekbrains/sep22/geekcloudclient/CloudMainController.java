@@ -184,19 +184,11 @@ public class CloudMainController implements Initializable {
 
         }
     }
-    private void renameOnServerForm(String newName) {
-        try {
-            network.getOutputStream().writeObject(new RenameFile(selectedItem, newName));
-            network.getOutputStream().writeObject(new DirFileListRequest(selectedItem));
-        } catch (IOException e) {
-            log.debug("ERROR Rename Failed " + e.getMessage());
-            showError("rename failed " + e.getMessage());
-        }
-    }
 
     private void renameOnServerForm(String newName) {
         try {
             network.getOutputStream().writeObject(new RenameFile(selectedItem, newName));
+            network.getOutputStream().writeObject(new DirRequest(selectedItem));
         } catch (IOException e) {
             log.debug("ERROR Rename Failed " + e.getMessage());
             showError("rename failed " + e.getMessage());
@@ -216,6 +208,7 @@ public class CloudMainController implements Initializable {
     public void delServerBtnClick(ActionEvent actionEvent) throws IOException {
         String fileName = serverView.getSelectionModel().getSelectedItem();
         network.getOutputStream().writeObject(new DeleteFile(fileName));
+        network.getOutputStream().writeObject(new DirRequest(selectedItem));
     }
 
     private void showError(String error) {
