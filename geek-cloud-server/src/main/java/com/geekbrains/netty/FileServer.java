@@ -1,6 +1,5 @@
 package com.geekbrains.netty;
 
-import com.geekbrains.db.dbConnect;
 import com.geekbrains.netty.serial.FileHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -18,10 +17,8 @@ import java.sql.Connection;
 
 @Slf4j
 public class FileServer {
-    static Connection connection = null;
 
     public static void main(String[] args) {
-        connection = dbConnect.getConnect();
         EventLoopGroup auth = new NioEventLoopGroup(1);
         EventLoopGroup worker = new NioEventLoopGroup();
         try {

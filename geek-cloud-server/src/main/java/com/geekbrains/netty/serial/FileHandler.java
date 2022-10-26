@@ -40,6 +40,20 @@ public class FileHandler extends SimpleChannelInboundHandler<CloudMessage> {
             System.out.println(file);
             Files.delete(file);
             ctx.writeAndFlush(new ListMessage(serverDir));
+        } else if (cloudMessage instanceof RenameFile message) {
+            File file = new File(serverDir + File.separator + message.getFileName());
+            File newNameFile = new File(serverDir + File.separator + message.getNewFileName());
+            if (newNameFile.exists()) {
+                log.error("File with name " + message.getNewFileName() + " is exist ");
+            } else {
+                log.debug("file to rename " + file.getAbsolutePath());
+                log.debug("new file name " + newNameFile.getAbsolutePath());
+                if (file.renameTo(newNameFile)) {
+                    log.debug("File is renamed");
+                } else {
+                    log.debug("file is not renamed");
+                }
+            }
         }
     }
 }

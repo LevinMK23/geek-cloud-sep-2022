@@ -6,5 +6,5 @@ module geek.cloud.server {
     requires com.geekbrains.common;
     requires io.netty.buffer;
     requires org.slf4j;
-    exports com.geekbrains.db;
+    exports com.geekbrains;
 }

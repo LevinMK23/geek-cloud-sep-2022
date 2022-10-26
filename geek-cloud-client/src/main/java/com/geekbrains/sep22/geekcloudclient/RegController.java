@@ -1,17 +1,15 @@
 package com.geekbrains.sep22.geekcloudclient;
 
-import com.geekbrains.db.dbConnect;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class RegController {
 
@@ -28,11 +26,20 @@ public class RegController {
     String query = null;
     @FXML
     void regOkBtnClick(ActionEvent event) throws SQLException {
-
-        query = "INSERT users (login, password) VALUE " + "('" + loginRegField.getText() + "', '" + passRegField.getText() + ");";
-        connection = dbConnect.getConnect();
-        preparedStatement = connection.prepareStatement(query);
-        preparedStatement.execute();
-
+        String login = loginRegField.getText();
+        String password = passRegField.getText();
+        if (login.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+        } else {
+            query = "INSERT users (login, password) VALUE " + "('" + loginRegField.getText() + "', '" + passRegField.getText() + "');";
+            connection = dbConnect.getConnect();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.execute();
+            Stage stage = (Stage) regOkBtn.getScene().getWindow();
+            stage.close();
+        }
     }
 }

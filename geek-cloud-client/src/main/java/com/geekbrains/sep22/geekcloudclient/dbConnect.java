@@ -1,4 +1,4 @@
-package com.geekbrains.db;
+package com.geekbrains.sep22.geekcloudclient;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,6 +18,7 @@ public class dbConnect {
     public static Connection getConnect (){
         try {
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", HOST,PORT,DB_NAME),USERNAME,PASSWORD);
+            System.out.println("Connection successful");
         } catch (SQLException ex) {
             Logger.getLogger(dbConnect.class.getName()).log(Level.SEVERE, null, ex);
         }

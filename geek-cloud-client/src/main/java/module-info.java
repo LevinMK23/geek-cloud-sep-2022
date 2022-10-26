@@ -6,6 +6,8 @@ module com.geekbrains.sep.geekcloudclient {
     requires MaterialFX;
     requires java.sql;
     requires geek.cloud.server;
+    requires lombok;
+    requires org.slf4j;
 
     opens com.geekbrains.sep22.geekcloudclient to javafx.fxml;
     exports com.geekbrains.sep22.geekcloudclient;
